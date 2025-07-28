@@ -1,0 +1,5 @@
+- XX migrations to create database tables
+- XX refine schema with constraints for safety ie. UNIQUE for cover images
+- XX seed with some sample data
+- XX create base and minimum API routes
+- XX write steps to install and start backend in development
