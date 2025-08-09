@@ -36,12 +36,13 @@ router.get('/', async (req, res) => {
         JSON_AGG(DISTINCT product_images.image_url) AS images,
         JSON_AGG(DISTINCT product_images.image_alt_text) AS images_alt_text,
         JSON_AGG(DISTINCT product_categories.name) AS categories,
-        JSON_AGG(DISTINCT podcasts_products_join.podcast_id) AS related_podcast_id
+        JSON_AGG(DISTINCT podcasts.title) AS related_podcast
     FROM products
     LEFT JOIN product_images ON products.product_id = product_images.product_id
     LEFT JOIN products_categories_join ON products.product_id = products_categories_join.product_id
     LEFT JOIN product_categories ON products_categories_join.category_id = product_categories.category_id
     LEFT JOIN podcasts_products_join ON products.product_id = podcasts_products_join.product_id
+    LEFT JOIN podcasts ON podcasts_products_join.podcast_id = podcasts.podcast_id
   `;
 
   // FILTERING - What specifically?  - WHERE ==========================================================================================

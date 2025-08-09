@@ -22,6 +22,22 @@ const express = require('express');
 const router = express.Router();
 const { pool } = require('../db.js');
 
+router.get('/simple-list', async (req, res) => {
+  try {
+    const result = await pool.query(
+      `
+        SELECT 
+          podcasts.podcast_id,
+          podcasts.title
+        FROM podcasts
+        `
+    );
+    res.json(result.rows);
+  } catch (err) {
+    console.log(err);
+    res.status(500).send('Internal Server Error');
+  }
+});
 router.get('/random', async (req, res) => {
   const { genre } = req.query;
 
@@ -81,7 +97,7 @@ router.get('/', async (req, res) => {
 
   if (search) {
     whereModifiers.push(
-      `podcast.title ILIKE $${paramNumber} OR podcasts.description ILIKE $${paramNumber}`
+      `podcasts.title ILIKE $${paramNumber} OR podcasts.description ILIKE $${paramNumber}`
     );
     params.push(`%${search}%`);
     paramNumber++;
@@ -104,8 +120,8 @@ router.get('/', async (req, res) => {
 
   // SORTING - Are sorting rules applied? - SORT BY ==========================================================================================
   const sortOptions = {
-    rating_ASC: 'podcasts.rating ASC',
-    rating_DESC: 'podcasts.rating DESC',
+    rating_ASC: 'average_rating ASC',
+    rating_DESC: 'average_rating DESC',
     title_ASC: 'podcasts.title ASC',
     title_DESC: 'podcasts.title DESC',
   };
@@ -168,7 +184,7 @@ router.get('/:podcastID/episodes', async (req, res) => {
   const offset = (page - 1) * limit;
   const sortOptions = {
     episode_number_DESC: 'episodes.episode_number DESC',
-    episode_number_ASC: 'episode.episode_number ASC',
+    episode_number_ASC: 'episodes.episode_number ASC',
   };
 
   let query = `
