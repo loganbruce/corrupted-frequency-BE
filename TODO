@@ -1,5 +1,57 @@
-- XX migrations to create database tables
-- XX refine schema with constraints for safety ie. UNIQUE for cover images
-- XX seed with some sample data
-- XX create base and minimum API routes
-- XX write steps to install and start backend in development
+## Home
+
+- Get 6 Newest episodes XX
+- Get random podcast by genre XX
+- Get staff picks XX
+
+## About
+
+- Get all team members info XX
+
+## Merchandise
+
+- Get all products XX
+- Get single product XX
+
+Filters
+
+- Get products under category type XX
+- Get products by podcast XX
+- Get products based on search XX
+
+## Press
+
+- Get reviews
+
+## Podcasts
+
+- Get all genres
+- Get 6 Newest episodes XX
+- Get random podcast by genre XX
+- Get all podcasts XX
+
+Filters
+
+- Get podcasts by genre XX
+- Get podcasts by search XX
+
+## Podcast Page
+
+- Get single podcast XX
+- Get podcast episodes XX
+- Post new rating
+
+## Episode Page
+
+- Get single episode XX
+- Get epiosde transcript XX
+
+## Contact Us
+
+- no calls needed
+
+# Next Steps
+
+- Integrating full pagination support
+- Explore transcript text handling
+- Adding ratings route to podcasts router
