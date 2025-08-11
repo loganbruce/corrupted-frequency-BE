@@ -1,6 +1,7 @@
 // imports and set up //
 const express = require('express');
 const dotenv = require('dotenv');
+const cors = require('cors');
 const podcastRouter = require('./routes/podcasts');
 const episodesRouter = require('./routes/episodes');
 const storeRouter = require('./routes/store');
@@ -11,6 +12,12 @@ dotenv.config();
 
 const app = express();
 app.use(express.json());
+
+app.use(
+  cors({
+    origin: process.env.FRONTEND,
+  })
+);
 
 // routes //
 

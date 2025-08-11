@@ -4,7 +4,7 @@
 2. Ensure you have node installed
 3. Rename .env.example to .env
 4. Run `docker compose up --build`
-5. Run `npm run migrate`
+5. Run `npm run migrate:up`
 6. Run `npm run seed`
 7. Navigate to http://localhost:3000
 8. To close run `docker compose down`
